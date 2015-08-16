@@ -21,6 +21,7 @@ console.log('=== public/js/directives/ambryInputText.js ===');
     var directive = {
       restrict:         'E',
       replace:          true,
+      require:       'ngModel',
       scope:            {
         type:        '@',
         icon:        '@',
@@ -34,7 +35,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
         ngMaxlength: '=',
         ngPattern:   '=',
         ngChange:    '=',
-        ngTrim:      '='
+        ngTrim:      '=',
+        model:       '=ngModel'
       },
       compile:          _compile,
       link:             _link,
@@ -59,7 +61,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
     function _compile(){
 
       return {
-        post: function(scope, element, attributes){
+        post: function(scope, element, attributes, ngModelCtrl){
+          ngModelCtrl.$setViewValue(attributes.value);
 
           scope.input = element.find('input');
           scope.label = element.find('label');

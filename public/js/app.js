@@ -22,6 +22,8 @@ console.log('=== public/js/app.js ===');
         $scope.st = 'MM';
         console.log('$scope', $scope);
       };
+
+      $scope.contact = {};
     }
 
 }());

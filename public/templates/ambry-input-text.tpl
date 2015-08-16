@@ -5,7 +5,7 @@
     type="text"
     name="{{vm.name}}"
     id="{{vm.name}}"
-    value="{{vm.value}}"
+    ng-model="vm.model"
     />
 
   <button ng-click="vm.test()">Click</button>

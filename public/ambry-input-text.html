@@ -4,7 +4,7 @@
     <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
     <title>Angular Directives</title>
 
-    <!-- set a different default font -- see body tag in css -->
+    <!-- set a different default font - see body tag in css -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat">
 
     <!-- application libraries (3rd party css) -->
@@ -22,12 +22,16 @@
         <form>
             <div>
                 <h5>Ambry Form Directive: Text</h5>
-                <ambry-input-text label="First" name="fname" value="mike"></ambry-input-text>
-                <ambry-input-text label="Last" name="lname" value="erickson"></ambry-input-text>
-                <ambry-input-text label="Address" name="address" value="15611 mayflower lane"></ambry-input-text>
-                <ambry-input-text label="City" name="city" value="huntington beach"></ambry-input-text>
-                <ambry-input-text label="ST" name="st" ng-model="st"></ambry-input-text>
-                <ambry-input-text label="Zip" name="zip" value="92647"></ambry-input-text>
+
+                <!-- I've put the line below only for demonstrative purposes -->
+                <pre>{{contact | json}}</pre>
+
+                <ambry-input-text ng-model="contact.fname" label="First" name="fname" value="mike"></ambry-input-text>
+                <ambry-input-text ng-model="contact.lname" label="Last" name="lname" value="erickson"></ambry-input-text>
+                <ambry-input-text ng-model="contact.address" label="Address" name="address" value="15611 mayflower lane"></ambry-input-text>
+                <ambry-input-text ng-model="contact.city" label="City" name="city" value="huntington beach"></ambry-input-text>
+                <ambry-input-text ng-model="contact.st" label="ST" name="st" ng-model="st"></ambry-input-text>
+                <ambry-input-text ng-model="contact.zip" label="Zip" name="zip" value="92647"></ambry-input-text>
 
                 <button ng-click="test()">Button</button>
             </div>
