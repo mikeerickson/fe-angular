@@ -1,0 +1,22 @@
+{
+  "name": "fe-boilerplate",
+  "version": "0.0.1",
+  "authors": [
+    "Mike Erickson <merickson@ambrygen.com>"
+  ],
+  "description": "ambry front ending boilerplate",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.9.3",
+    "bootstrap": "~3.3.5",
+    "sprintf": "~1.0.2"
+  }
+}

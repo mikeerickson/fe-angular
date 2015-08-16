@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Angular Directives</title>
+
+    <!-- set a different default font -- see body tag in css -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat">
+
+    <!-- application libraries (3rd party css) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    <!-- application main css -->
+    <link rel="stylesheet" href="css/ambry-input.css" />
+
+</head>
+
+<body ng-app="app">
+    <div ng-controller="PersonController">
+
+        <h4>Direct Directive Access</h4>
+        <person sal="mr" fname="mike" lname="erickson"></person>
+        <h4>Data From Scope Data</h4>
+        <ul ng-repeat="person in family">
+            <li>
+                <person sal="{{person.sal}}" fname="{{person.fname}}" lname="{{person.lname}}"></person>
+            </li>
+        </ul>
+    </div>
+
+    <!-- application libraries (3rd party libs) -->
+    <script src="js/lib.min.js"></script>
+
+    <!-- application js -->
+    <script type="text/javascript" src="js/directives/person.js"></script>
+
+</body>
+</html>
+
