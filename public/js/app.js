@@ -18,8 +18,7 @@ console.log('=== public/js/app.js ===');
     function ContactCtrl($scope) {
       var vm = this;
       $scope.test = function(){
-        vm.st = 'LL';
-        $scope.st = 'MM';
+        $scope.contact.st = 'NY';
         console.log('$scope', $scope);
       };
 
