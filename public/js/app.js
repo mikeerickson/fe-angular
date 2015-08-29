@@ -3,9 +3,10 @@
 
 console.log('=== public/js/app.js ===');
 
-"use strict";
-
 (function() {
+
+
+  "use strict";
 
   // bootstrap angular
   angular.module('app',
