@@ -3,7 +3,6 @@
 
 console.log('=== public/js/directives/ambryInputNumber.js ===');
 
-
 (function() {
 
   'use strict';
@@ -21,8 +20,10 @@ console.log('=== public/js/directives/ambryInputNumber.js ===');
     var _uniqueId    = 0;
 
     var directive = {
-      restrict:         'E',
-      scope:            {
+      restrict:      'E',
+      replace:       true,
+      require:       'ngModel',
+      scope:         {
         type:        '@',
         icon:        '@',
         name:        '@',
@@ -35,14 +36,11 @@ console.log('=== public/js/directives/ambryInputNumber.js ===');
         ngPattern:   '=',
         ngChange:    '=',
         ngTrim:      '=',
-        ngModel:     '=',
+        model:       '=ngModel',
       },
       compile:          _compile,
       link:             _link,
       controller:       _ambryInputNumberContoller,
-      test: function(value){
-        console.log('hello world from inside number: ', value);
-      },
       controllerAs:     'vm',
       bindToController: true,
       templateUrl:      _templateUrl
@@ -60,7 +58,8 @@ console.log('=== public/js/directives/ambryInputNumber.js ===');
     function _compile(){
 
       return {
-        post: function(scope, element, attributes){
+        post: function(scope, element, attributes, ngModelCtrl){
+          ngModelCtrl.$setViewValue(attributes.value);
 
           scope.input = element.find('input');
           scope.label = element.find('label');
@@ -115,7 +114,6 @@ console.log('=== public/js/directives/ambryInputNumber.js ===');
 
   function _ambryInputNumberContoller($scope) {
     var vm = this;
-    console.log('"name": "%s", "value": "%s"', vm.name, vm.value);
   }
 
 }());

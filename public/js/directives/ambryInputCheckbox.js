@@ -1,21 +1,21 @@
-// AMBRY-INPUT-TEXT
+// AMBRY-INPUT-CHECKBOX
 // =============================================================================
 
-console.log('=== public/js/directives/ambryInputText.js ===');
+console.log('=== public/js/directives/ambryInputCheckbox.js ===');
 
 (function() {
 
   "use strict";
 
-  angular.module('ambry.inputText', [])
-    .directive("ambryInputText", _inputText);
+  angular.module('ambry.inputCheckbox', [])
+    .directive("ambryInputCheckbox", _inputCheckbox);
 
 // DIRECTIVE METHODS
 // =============================================================================
 
-  function _inputText() {
+  function _inputCheckbox() {
 
-    var _templateUrl = 'templates/ambry-input-text.tpl';
+    var _templateUrl = 'templates/ambry-input-checkbox.tpl';
     var _uniqueId    = 0;
 
     var directive = {
@@ -39,8 +39,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
         model:       '=ngModel'
       },
       compile:          _compile,
-      //link:             _link,
-      controller:       _ambryInputTextContoller,
+      link:             _link,
+      controller:       _ambryInputCheckboxContoller,
       controllerAs:     'vm',
       bindToController: true,
       templateUrl:      _templateUrl,
@@ -49,28 +49,40 @@ console.log('=== public/js/directives/ambryInputText.js ===');
     return directive;
 
     function _link(scope, element, attrs, ngModelCtrl) {
-      console.log('_link method');
+      console.log('=== _link ===');
+      console.log('scope:   ', scope);
+      console.log('element: ', element);
+      console.log('attrs:   ', attrs);
+      console.log('ctrl'     , ngModelCtrl);
     }
 
     function _compile(){
-
       return {
+
+        pre: function(scope, element, attributes, ngModelCtrl) {
+          // console.log('_compile.pre', scope, attributes, element);
+        },
+
         post: function(scope, element, attributes, ngModelCtrl){
+          //console.log('_compile.post', scope, attributes, element);
+
           ngModelCtrl.$setViewValue(attributes.value);
 
           scope.input = element.find('input');
           scope.label = element.find('label');
 
           //Default options
-          attributes.type  = attributes.type  || 'text';
+          attributes.type  = attributes.type  || 'checkbox';
 
           var item       = 'input_' + _uniqueId++
             , inputClass = 'input--filled';
 
           scope.input.attr('id' , item);
-          scope.label.attr('for', item);
 
+          // start the process
           onInputChange();
+
+          // Attach a couple common button events
           scope.input.bind('focus', onInputFocus);
           scope.input.bind('blur',  onInputBlur);
 
@@ -104,13 +116,14 @@ console.log('=== public/js/directives/ambryInputText.js ===');
           }
 
         }
+
       };
     }
 
   }
 
-  // component controller
-  function _ambryInputTextContoller($scope, $element, $attrs) {
+  function _ambryInputCheckboxContoller($scope, $element, $attrs) {
+    var vm = this;
 
   }
 

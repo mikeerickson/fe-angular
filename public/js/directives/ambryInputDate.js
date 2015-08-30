@@ -1,21 +1,21 @@
 // AMBRY-INPUT-TEXT
 // =============================================================================
 
-console.log('=== public/js/directives/ambryInputText.js ===');
+console.log('=== public/js/directives/ambryInputDate.js ===');
 
 (function() {
 
   "use strict";
 
-  angular.module('ambry.inputText', [])
-    .directive("ambryInputText", _inputText);
+  angular.module('ambry.inputDate', [])
+    .directive("ambryInputDate", _inputDate);
 
 // DIRECTIVE METHODS
 // =============================================================================
 
-  function _inputText() {
+  function _inputDate() {
 
-    var _templateUrl = 'templates/ambry-input-text.tpl';
+    var _templateUrl = 'templates/ambry-input-date.tpl';
     var _uniqueId    = 0;
 
     var directive = {
@@ -39,8 +39,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
         model:       '=ngModel'
       },
       compile:          _compile,
-      //link:             _link,
-      controller:       _ambryInputTextContoller,
+      link:             _link,
+      controller:       _ambryInputDateContoller,
       controllerAs:     'vm',
       bindToController: true,
       templateUrl:      _templateUrl,
@@ -48,8 +48,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
 
     return directive;
 
-    function _link(scope, element, attrs, ngModelCtrl) {
-      console.log('_link method');
+    function _link(scope, element, attrs) {
+      //console.log('=== _link ===');
     }
 
     function _compile(){
@@ -62,7 +62,7 @@ console.log('=== public/js/directives/ambryInputText.js ===');
           scope.label = element.find('label');
 
           //Default options
-          attributes.type  = attributes.type  || 'text';
+          attributes.type  = attributes.type  || 'date';
 
           var item       = 'input_' + _uniqueId++
             , inputClass = 'input--filled';
@@ -110,7 +110,7 @@ console.log('=== public/js/directives/ambryInputText.js ===');
   }
 
   // component controller
-  function _ambryInputTextContoller($scope, $element, $attrs) {
+  function _ambryInputDateContoller($scope, $element, $attrs) {
 
   }
 

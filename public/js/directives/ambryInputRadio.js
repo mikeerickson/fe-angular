@@ -1,21 +1,21 @@
-// AMBRY-INPUT-TEXT
+// AMBRY-INPUT-CHECKBOX
 // =============================================================================
 
-console.log('=== public/js/directives/ambryInputText.js ===');
+console.log('=== public/js/directives/ambryInputRadio.js ===');
 
 (function() {
 
   "use strict";
 
-  angular.module('ambry.inputText', [])
-    .directive("ambryInputText", _inputText);
+  angular.module('ambry.inputRadio', [])
+    .directive("ambryInputRadio", _inputRadio);
 
 // DIRECTIVE METHODS
 // =============================================================================
 
-  function _inputText() {
+  function _inputRadio() {
 
-    var _templateUrl = 'templates/ambry-input-text.tpl';
+    var _templateUrl = 'templates/ambry-input-radio.tpl';
     var _uniqueId    = 0;
 
     var directive = {
@@ -39,8 +39,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
         model:       '=ngModel'
       },
       compile:          _compile,
-      //link:             _link,
-      controller:       _ambryInputTextContoller,
+      link:             _link,
+      controller:       _ambryInputRadioContoller,
       controllerAs:     'vm',
       bindToController: true,
       templateUrl:      _templateUrl,
@@ -48,12 +48,11 @@ console.log('=== public/js/directives/ambryInputText.js ===');
 
     return directive;
 
-    function _link(scope, element, attrs, ngModelCtrl) {
-      console.log('_link method');
+    function _link(scope, element, attrs) {
+      console.log('_link');
     }
 
     function _compile(){
-
       return {
         post: function(scope, element, attributes, ngModelCtrl){
           ngModelCtrl.$setViewValue(attributes.value);
@@ -62,15 +61,17 @@ console.log('=== public/js/directives/ambryInputText.js ===');
           scope.label = element.find('label');
 
           //Default options
-          attributes.type  = attributes.type  || 'text';
+          attributes.type  = attributes.type  || 'radio';
 
           var item       = 'input_' + _uniqueId++
             , inputClass = 'input--filled';
 
           scope.input.attr('id' , item);
-          scope.label.attr('for', item);
 
+          // start the process
           onInputChange();
+
+          // Attach a couple common button events
           scope.input.bind('focus', onInputFocus);
           scope.input.bind('blur',  onInputBlur);
 
@@ -82,8 +83,9 @@ console.log('=== public/js/directives/ambryInputText.js ===');
           });
 
           function onInputChange(){
-            if(scope.input.val().trim() !== '')
+            if(scope.input.val().trim() !== '') {
               addClass();
+            }
           }
 
           function onInputFocus(){
@@ -109,8 +111,8 @@ console.log('=== public/js/directives/ambryInputText.js ===');
 
   }
 
-  // component controller
-  function _ambryInputTextContoller($scope, $element, $attrs) {
+  function _ambryInputRadioContoller($scope, $element, $attrs) {
+    var vm = this;
 
   }
 

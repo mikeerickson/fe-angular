@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Angular Directives</title>
+
+    <!-- set a different default font - see body tag in css -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat">
+
+    <!-- application libraries (3rd party css) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    <!-- application main css -->
+    <link rel="stylesheet" href="css/ambry-input.css" />
+
+</head>
+
+<body ng-app="app">
+    <h1>Ambry Directives</h1>
+    <hr>
+    <div class="container form-group" ng-controller="ContactCtrl as vm">
+
+        <pre>Debug: <br />{{contact | json}}</pre>
+
+        <form>
+            <button ng-click="reset()">Reset Contact Data</button>
+            <hr />
+
+            <div>
+                <h5>Radio (w/ no class)</h5>
+                <!--<input type="radio" ng-model="contact.gender" name="contact.gender" value="male"> Male-->
+                <!--<input type="radio" ng-model="contact.gender" name="contact.gender" value="female"> Female-->
+
+                <ambry-input-radio ng-model="contact.gender" label="Female" name="gender" value="female"></ambry-input-radio>
+                <ambry-input-radio ng-model="contact.gender" label="Male"   name="gender" value="male"></ambry-input-radio>
+                <!--<ambry-input-radio class="radio-inline" ng-model="contact.gender" label="Other"  value="other"  name="gender" ></ambry-input-radio>-->
+            </div>
+            <hr />
+
+            <div>
+                <h5>Checkbox (w/ .checkbox-inline)</h5>
+                <ambry-input-checkbox class="checkbox-inline" ng-model="contact.opts.windows" label="Windows" name="opts1" ></ambry-input-checkbox>
+                <ambry-input-checkbox class="checkbox-inline" ng-model="contact.opts.osx"     label="OSX"     name="opts2" ></ambry-input-checkbox>
+                <ambry-input-checkbox class="checkbox-inline" ng-model="contact.opts.linux"   label="Linux"   name="opts3" ></ambry-input-checkbox>
+                <ambry-input-checkbox class="checkbox-inline" ng-model="contact.opts.other"   label="Other"   name="opts4" ></ambry-input-checkbox>
+            </div>
+            <hr />
+
+            <div>
+                <h5>Text</h5>
+                <ambry-input-text ng-model="contact.fname"   label="First:"   name="fname"></ambry-input-text>
+                <ambry-input-text ng-model="contact.lname"   label="Last:"    name="lname"></ambry-input-text>
+                <ambry-input-text ng-model="contact.address" label="Address:" name="address"></ambry-input-text>
+                <ambry-input-text ng-model="contact.city"    label="City:"    name="city"></ambry-input-text>
+                <ambry-input-text ng-model="contact.st"      label="ST:"      name="st" ></ambry-input-text>
+                <ambry-input-text ng-model="contact.zip"     label="Zip:"     name="zip" value="92647"></ambry-input-text>
+                <br />
+                <button ng-click="move()">Move To New York</button>
+
+            </div>
+            <hr />
+
+            <div>
+                <h5>Number</h5>
+                <ambry-input-number ng-model="contact.age"       label="Age:"       name="age"></ambry-input-number>
+                <ambry-input-number ng-model="contact.kids"      label="Kids:"      name="kids"></ambry-input-number>
+                <ambry-input-number ng-model="contact.grandkids" label="Grandkids:" name="grandkids"></ambry-input-number>
+            </div>
+            <hr />
+
+            <div>
+                <h5>Date</h5>
+                <h6>Native</h6>
+                <input type="date" ng-model="contact.dob" label="DOB" name="dob"/>
+                <br>
+                <h6>Directive</h6>
+                <ambry-input-date ng-model="contact.dob" label="DOB" name="dob"></ambry-input-date>
+            </div>
+            <hr />
+
+        </form>
+    </div>
+
+    <!-- application libraries (3rd party libs) -->
+    <script src="js/lib.min.js"></script>
+
+    <!-- angular directives -->
+    <script type="text/javascript" src="js/directives/ambryInputText.js"></script>
+    <script type="text/javascript" src="js/directives/ambryInputNumber.js"></script>
+    <script type="text/javascript" src="js/directives/ambryInputCheckbox.js"></script>
+    <script type="text/javascript" src="js/directives/ambryInputRadio.js"></script>
+    <script type="text/javascript" src="js/directives/ambryInputDate.js"></script>
+
+    <!-- application js -->
+    <script src="js/data/erickson-data.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

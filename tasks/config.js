@@ -1,7 +1,6 @@
 // CONFIG (TASKS)
 // =============================================================================
 
-
 module.exports = {
 
   defaults: {
@@ -26,7 +25,8 @@ module.exports = {
       './src/lib/lodash.min.js',
       './src/lib/bootstrap.min.js',
       './src/lib/angular.min.js',
-      './src/lib/angular-sprintf.min.js'
+      './src/lib/angular-sprintf.min.js',
+      './src/lib/bootbox.js'
     ],
     dest: './public/js',
     destFilename: 'lib.min.js',
